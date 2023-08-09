@@ -115,7 +115,7 @@ class Reservation(Resource):
 
 
 # Endpoints
-api.add_resource(Reservation,'/api/book/')
+api.add_resource(Reservation,'/book/')
 
 
 
