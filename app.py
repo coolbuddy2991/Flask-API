@@ -18,14 +18,7 @@ swaggerui_blueprint = get_swaggerui_blueprint(
     config={  # Swagger UI config overrides
         'app_name': "Train Reservation API"
     },
-    # oauth_config={  # OAuth config. See https://github.com/swagger-api/swagger-ui#oauth2-configuration .
-    #    'clientId': "your-client-id",
-    #    'clientSecret': "your-client-secret-if-required",
-    #    'realm': "your-realms",
-    #    'appName': "your-app-name",
-    #    'scopeSeparator': " ",
-    #    'additionalQueryStringParams': {'test': "hello"}
-    # }
+    
 )
 
 app.register_blueprint(swaggerui_blueprint)
@@ -49,8 +42,6 @@ class Reservation(Resource):
         data = request.get_json()
         cabinClass = data["cabinClass"]
         seats_req = data["seats_req"]
-        # if cabinClass != "First Class" or cabinClass != "Second Class":
-        #     return {"error":"Class not available. Please choose a class among First Class or Second Class"},401
         if seats_req <= Reservation.totalseats:
             
             for seat_no in range(seats_req):
