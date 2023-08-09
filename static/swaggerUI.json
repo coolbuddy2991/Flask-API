@@ -1,0 +1,76 @@
+{
+  "openapi": "3.0.21",
+  "info": {
+    "title": "Train Reservation API",
+    "version": "0.0.0.0",
+    "description": "API for booking seats"
+  },
+  "servers": [
+    {
+      "url": "http:127.0.0.1:5000",
+      "variables": {}
+    }
+  ],
+  
+  "paths": {
+    "/book/": {
+      "description": "To Book the Seats ",
+      "post": {
+        "summary": "Book Seats",
+        "description": "Book Seats",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cabinClass": {
+                    "type": "string",
+                    "example": "First Class"
+                  },
+                  "seats_req": {
+                    "type": "number",
+                    "example": 10
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "1",
+        "responses": {
+          "201": {
+            "description": "Success return newly created object",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Sample 201 Response": {
+                    "value": {
+                      "cabinClass": "First Class",
+                      "seats_req": 10
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Sample 401 Response": {
+                    "value": "Bad Request"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Default error sample response"
+          }
+        }
+      }
+    }
+  }
+}
