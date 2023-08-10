@@ -106,9 +106,10 @@ class Reservation(Resource):
         
         return
 
-    def get(self):
-        return {"msg":"This is a get request"},201
-
+    
+def get_seats(seats_req,cabinClass):
+    new_setas = available_seats[cabinClass].remove(seats_req)
+    return available_seats
 
 
 
